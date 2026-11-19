@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FAST FOOD</title>
+    <meta name="description" content="FAST FOOD - online fast food delivery">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+</head>
+
+<body>
+
+    <!-- ============ NAVBAR ============ -->
+    <header class="navbar" id="navbar">
+        <div class="container nav-inner">
+            <a href="#home" class="logo">🍔 FAST<span>FOOD</span></a>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="#home" data-i18n="nav_home">Home</a>
+                <a href="#menu" data-i18n="nav_menu">Menu</a>
+                <a href="#about" data-i18n="nav_about">About</a>
+                <a href="#contact" data-i18n="nav_contact">Contact</a>
+                <a href="#" id="mobileAuth" class="mobile-auth" data-i18n="nav_login">Login / Register</a>
+            </nav>
+
+            <div class="nav-actions">
+                <select id="langSelect" class="lang-select" aria-label="Language">
+                    <option value="uz">🇺🇿 O‘zbek</option>
+                    <option value="en">🇬🇧 English</option>
+                    <option value="ru">🇷🇺 Русский</option>
+                </select>
+                <button class="icon-btn" id="themeBtn" aria-label="Theme">🌙</button>
+                <button class="icon-btn" id="favBtn" aria-label="Favorites" title="Favorites">♥<span class="badge"
+                        id="favCount">0</span></button>
+                <button class="icon-btn" id="cartBtn" aria-label="Cart" title="Cart">🛒<span class="badge"
+                        id="cartCount">0</span></button>
+                <button class="btn btn-sm btn-outline auth-btn" id="authBtn" data-i18n="nav_login">Login /
+                    Register</button>
+                <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- ============ HOME / HERO ============ -->
+        <section class="hero" id="home">
+            <div class="container hero-inner">
+                <div class="hero-text">
+                    <span class="pill" data-i18n="hero_badge">Fast delivery</span>
+                    <h1 data-i18n="hero_title">Tez. Mazali. Issiq.</h1>
+                    <p data-i18n="hero_text">Burger, pitsa, lavash va yana ko‘p narsa.</p>
+                    <div class="hero-btns">
+                        <a href="#menu" class="btn btn-primary" data-i18n="hero_btn1">Order now</a>
+                        <a href="#offers" class="btn btn-outline" data-i18n="hero_btn2">Special offers</a>
+                    </div>
+                    <div class="stats">
+                        <div><b>30+</b><span data-i18n="stat1">Products</span></div>
+                        <div><b>10K+</b><span data-i18n="stat2">Clients</span></div>
+                        <div><b>4.8★</b><span data-i18n="stat3">Rating</span></div>
+                    </div>
+                </div>
+                <div class="hero-visual" aria-hidden="true">
+                    <div class="hero-circle"><span class="hero-main">🍔</span></div>
+                    <span class="float f1">🍕</span>
+                    <span class="float f2">🍟</span>
+                    <span class="float f3">🥤</span>
+                    <span class="float f4">🌯</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ POPULAR ============ -->
+        <section class="section" id="popular">
+            <div class="container">
+                <div class="section-head">
+                    <h2 data-i18n="popular_title">Popular products</h2>
+                    <p data-i18n="popular_sub">Our customers' favorites</p>
+                </div>
+                <div class="grid" id="popularGrid"></div>
+            </div>
+        </section>
+
+        <!-- ============ MENU ============ -->
+        <section class="section alt" id="menu">
+            <div class="container">
+                <div class="section-head">
+                    <h2 data-i18n="menu_title">Menu</h2>
+                    <p data-i18n="menu_sub">Choose your favorite meal</p>
+                </div>
+
+                <div class="toolbar">
+                    <input type="search" id="searchInput" data-i18n-ph="search_ph" placeholder="Search...">
+                    <select id="sortSelect" aria-label="Sort">
+                        <option value="popular" data-i18n="sort_popular">Most popular</option>
+                        <option value="new" data-i18n="sort_new">Newest</option>
+                        <option value="priceAsc" data-i18n="sort_price_asc">Price: low to high</option>
+                        <option value="priceDesc" data-i18n="sort_price_desc">Price: high to low</option>
+                        <option value="rating" data-i18n="sort_rating">Top rated</option>
+                    </select>
+                </div>
+
+                <div class="chips" id="chips"></div>
+                <p class="result-count" id="resultCount"></p>
+                <div class="grid" id="menuGrid"></div>
+                <p class="empty" id="menuEmpty" hidden data-i18n="no_results">Nothing found</p>
+            </div>
+        </section>
+
+        <!-- ============ SPECIAL OFFERS ============ -->
+        <section class="section" id="offers">
+            <div class="container">
+                <div class="section-head">
+                    <h2 data-i18n="offers_title">Special offers</h2>
+                    <p data-i18n="offers_sub">Don't miss our best deals</p>
+                </div>
+                <div class="offers">
+                    <div class="offer o1">
+                        <span class="offer-emoji">🍔</span>
+                        <h3 data-i18n="offer1_t">Burger week</h3>
+                        <p data-i18n="offer1_d">Try our best burgers</p>
+                        <button class="btn btn-yellow" data-offer="burgers" data-i18n="offer_btn">View</button>
+                    </div>
+                    <div class="offer o2">
+                        <span class="offer-emoji">🍕</span>
+                        <h3 data-i18n="offer2_t">Pizza party</h3>
+                        <p data-i18n="offer2_d">Perfect for friends and family</p>
+                        <button class="btn btn-yellow" data-offer="pizza" data-i18n="offer_btn">View</button>
+                    </div>
+                    <div class="offer o3">
+                        <span class="offer-emoji">🍰</span>
+                        <h3 data-i18n="offer3_t">Sweet time</h3>
+                        <p data-i18n="offer3_d">Desserts and cold drinks</p>
+                        <button class="btn btn-yellow" data-offer="desserts" data-i18n="offer_btn">View</button>
+                    </div>
+                </div>
+                <p class="free-note" data-i18n="free_note">Free delivery for orders over 150 000 so‘m!</p>
+            </div>
+        </section>
+
+        <!-- ============ ABOUT ============ -->
+        <section class="section alt" id="about">
+            <div class="container about">
+                <div class="about-visual" aria-hidden="true">👨‍🍳</div>
+                <div>
+                    <h2 data-i18n="about_title">About us</h2>
+                    <p data-i18n="about_t1"></p>
+                    <p data-i18n="about_t2"></p>
+                    <ul class="features">
+                        <li data-i18n="about_f1">Fresh ingredients</li>
+                        <li data-i18n="about_f2">Fast delivery</li>
+                        <li data-i18n="about_f3">Affordable prices</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ REVIEWS ============ -->
+        <section class="section" id="reviews">
+            <div class="container">
+                <div class="section-head">
+                    <h2 data-i18n="reviews_title">Customer reviews</h2>
+                </div>
+                <div class="reviews">
+                    <figure class="review">
+                        <div class="stars">★★★★★</div>
+                        <blockquote data-i18n="rev1"></blockquote>
+                        <figcaption>Aziz K.</figcaption>
+                    </figure>
+                    <figure class="review">
+                        <div class="stars">★★★★★</div>
+                        <blockquote data-i18n="rev2"></blockquote>
+                        <figcaption>Malika R.</figcaption>
+                    </figure>
+                    <figure class="review">
+                        <div class="stars">★★★★☆</div>
+                        <blockquote data-i18n="rev3"></blockquote>
+                        <figcaption>Dmitriy S.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ FAQ ============ -->
+        <section class="section alt" id="faq">
+            <div class="container narrow">
+                <div class="section-head">
+                    <h2 data-i18n="faq_title">FAQ</h2>
+                </div>
+                <div class="faq">
+                    <div class="faq-item"><button class="faq-q" data-i18n="faq_q1"></button>
+                        <div class="faq-a">
+                            <p data-i18n="faq_a1"></p>
+                        </div>
+                    </div>
+                    <div class="faq-item"><button class="faq-q" data-i18n="faq_q2"></button>
+                        <div class="faq-a">
+                            <p data-i18n="faq_a2"></p>
+                        </div>
+                    </div>
+                    <div class="faq-item"><button class="faq-q" data-i18n="faq_q3"></button>
+                        <div class="faq-a">
+                            <p data-i18n="faq_a3"></p>
+                        </div>
+                    </div>
+                    <div class="faq-item"><button class="faq-q" data-i18n="faq_q4"></button>
+                        <div class="faq-a">
+                            <p data-i18n="faq_a4"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ CONTACT ============ -->
+        <section class="section" id="contact">
+            <div class="container contact">
+                <div>
+                    <h2 data-i18n="contact_title">Contact us</h2>
+                    <p data-i18n="contact_sub"></p>
+                    <ul class="contact-info">
+                        <li>📍 <span data-i18n="address_v"></span></li>
+                        <li>📞 <a href="tel:+998901234567">+998 90 123 45 67</a></li>
+                        <li>✉️ <a href="mailto:info@fastfood.uz">info@fastfood.uz</a></li>
+                        <li>🕒 <span data-i18n="c_hours_v"></span></li>
+                    </ul>
+                </div>
+                <form class="form" id="contactForm" novalidate>
+                    <div class="field"><label data-i18n="c_name">Name</label><input name="name" type="text"><small
+                            class="err" data-err="name"></small></div>
+                    <div class="field"><label data-i18n="email">Email</label><input name="email" type="email"><small
+                            class="err" data-err="email"></small></div>
+                    <div class="field"><label data-i18n="c_msg">Message</label><textarea name="message"
+                            rows="4"></textarea><small class="err" data-err="message"></small></div>
+                    <button class="btn btn-primary" type="submit" data-i18n="c_send">Send</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div>
+                <a href="#home" class="logo">🍔 FAST<span>FOOD</span></a>
+                <p data-i18n="footer_text"></p>
+            </div>
+            <div>
+                <h4 data-i18n="footer_links">Links</h4>
+                <a href="#menu" data-i18n="nav_menu">Menu</a>
+                <a href="#about" data-i18n="nav_about">About</a>
+                <a href="#faq">FAQ</a>
+                <a href="#contact" data-i18n="nav_contact">Contact</a>
+                <a href="#" id="footerOrders" data-i18n="orders_title">Order history</a>
+            </div>
+            <div>
+                <h4 data-i18n="nav_contact">Contact</h4>
+                <a href="tel:+998901234567">+998 90 123 45 67</a>
+                <a href="mailto:info@fastfood.uz">info@fastfood.uz</a>
+                <span data-i18n="address_v"></span>
+            </div>
+        </div>
+        <div class="copy">© <span id="year"></span> FAST FOOD. <span data-i18n="footer_rights">All rights
+                reserved.</span></div>
+    </footer>
+
+    <!-- ============ OVERLAY ============ -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- CART DRAWER -->
+    <aside class="drawer" id="cartDrawer" aria-hidden="true">
+        <div class="drawer-head">
+            <h3 data-i18n="cart_title">Cart</h3><button class="close" data-close>✕</button>
+        </div>
+        <div class="drawer-body" id="cartItems"></div>
+        <div class="drawer-foot" id="cartFoot">
+            <div class="row"><span data-i18n="cart_subtotal">Subtotal</span><b id="cartTotal">0</b></div>
+            <button class="btn btn-primary full" id="checkoutBtn" data-i18n="checkout">Checkout</button>
+        </div>
+    </aside>
+
+    <!-- FAVORITES DRAWER -->
+    <aside class="drawer" id="favDrawer" aria-hidden="true">
+        <div class="drawer-head">
+            <h3 data-i18n="fav_title">Favorites</h3><button class="close" data-close>✕</button>
+        </div>
+        <div class="drawer-body" id="favItems"></div>
+    </aside>
+
+    <!-- AUTH MODAL -->
+    <div class="modal" id="authModal" role="dialog" aria-hidden="true">
+        <button class="close" data-close>✕</button>
+        <div class="tabs">
+            <button class="tab active" data-tab="login" data-i18n="login">Login</button>
+            <button class="tab" data-tab="register" data-i18n="register">Register</button>
+        </div>
+
+        <form class="form" id="loginForm" novalidate>
+            <div class="field"><label data-i18n="email_or_phone">Email or phone</label><input name="id" type="text"
+                    autocomplete="username"><small class="err" data-err="id"></small></div>
+            <div class="field"><label data-i18n="password">Password</label>
+                <div class="pw"><input name="password" type="password" autocomplete="current-password"><button
+                        type="button" class="eye" data-eye>👁</button></div>
+                <small class="err" data-err="password"></small>
+            </div>
+            <button class="btn btn-primary full" type="submit" data-i18n="login">Login</button>
+            <p class="note" data-i18n="demo_note"></p>
+        </form>
+
+        <form class="form hidden" id="registerForm" novalidate>
+            <div class="two">
+                <div class="field"><label data-i18n="first_name">First name</label><input name="first"
+                        type="text"><small class="err" data-err="first"></small></div>
+                <div class="field"><label data-i18n="last_name">Last name</label><input name="last" type="text"><small
+                        class="err" data-err="last"></small></div>
+            </div>
+            <div class="field"><label data-i18n="email">Email</label><input name="email" type="email"><small class="err"
+                    data-err="email"></small></div>
+            <div class="field"><label data-i18n="phone">Phone</label><input name="phone" type="tel"
+                    placeholder="+998901234567"><small class="err" data-err="phone"></small></div>
+            <div class="field"><label data-i18n="password">Password</label>
+                <div class="pw"><input name="password" type="password" autocomplete="new-password"><button type="button"
+                        class="eye" data-eye>👁</button></div>
+                <small class="err" data-err="password"></small>
+            </div>
+            <div class="field"><label data-i18n="confirm_password">Confirm password</label>
+                <div class="pw"><input name="confirm" type="password" autocomplete="new-password"><button type="button"
+                        class="eye" data-eye>👁</button></div>
+                <small class="err" data-err="confirm"></small>
+            </div>
+            <button class="btn btn-primary full" type="submit" data-i18n="register">Register</button>
+            <p class="note" data-i18n="demo_note"></p>
+        </form>
+    </div>
+
+    <!-- ACCOUNT MODAL -->
+    <div class="modal" id="accountModal" role="dialog" aria-hidden="true">
+        <button class="close" data-close>✕</button>
+        <h3 data-i18n="my_account">My account</h3>
+        <div class="account" id="accountInfo"></div>
+        <button class="btn btn-outline full" id="accOrdersBtn" data-i18n="orders_title">Order history</button>
+        <button class="btn btn-primary full" id="logoutBtn" data-i18n="logout">Logout</button>
+    </div>
+
+    <!-- CHECKOUT MODAL -->
+    <div class="modal wide" id="checkoutModal" role="dialog" aria-hidden="true">
+        <button class="close" data-close>✕</button>
+        <h3 data-i18n="ck_title">Checkout</h3>
+        <div class="checkout-grid">
+            <form class="form" id="checkoutForm" novalidate>
+                <div class="two">
+                    <div class="field"><label data-i18n="first_name">First name</label><input name="first"
+                            type="text"><small class="err" data-err="first"></small></div>
+                    <div class="field"><label data-i18n="last_name">Last name</label><input name="last"
+                            type="text"><small class="err" data-err="last"></small></div>
+                </div>
+                <div class="field"><label data-i18n="phone">Phone</label><input name="phone" type="tel"
+                        placeholder="+998901234567"><small class="err" data-err="phone"></small></div>
+                <div class="field"><label data-i18n="ck_address">Address</label><input name="address" type="text"><small
+                        class="err" data-err="address"></small></div>
+                <div class="field"><label data-i18n="ck_note">Note</label><textarea name="note" rows="3"></textarea>
+                </div>
+                <p class="note" data-i18n="ck_pay">Payment: cash on delivery</p>
+                <button class="btn btn-primary full" type="submit" data-i18n="ck_confirm">Confirm order</button>
+            </form>
+            <div class="summary">
+                <h4 data-i18n="ck_items">Your order</h4>
+                <div id="ckItems"></div>
+                <div class="row"><span data-i18n="cart_subtotal">Subtotal</span><span id="ckSub"></span></div>
+                <div class="row"><span data-i18n="cart_delivery">Delivery</span><span id="ckDel"></span></div>
+                <div class="row total"><span data-i18n="cart_total">Total</span><b id="ckTotal"></b></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ORDERS MODAL -->
+    <div class="modal wide" id="ordersModal" role="dialog" aria-hidden="true">
+        <button class="close" data-close>✕</button>
+        <h3 data-i18n="orders_title">Order history</h3>
+        <div id="ordersList"></div>
+    </div>
+
+    <!-- SUCCESS MODAL -->
+    <div class="modal success" id="successModal" role="dialog" aria-hidden="true">
+        <div class="check">✓</div>
+        <h3 data-i18n="success_title">Order placed!</h3>
+        <p data-i18n="success_text"></p>
+        <p class="order-no"><span data-i18n="order_no">Order No</span>: <b id="successNo"></b></p>
+        <button class="btn btn-primary" data-close data-i18n="success_btn">Great</button>
+    </div>
+
+    <div class="toast" id="toast" role="status"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
